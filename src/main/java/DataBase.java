@@ -57,6 +57,10 @@ public class DataBase {
 
 
     }
+    public void deleteSudent() throws SQLException {
+        statement.execute("DELETE FROM users WHERE id='"+serchId.getText()+"'");
+
+    }
 
     public void readBD() throws SQLException {
 
@@ -157,6 +161,20 @@ public class DataBase {
             setConn();
             createDB();
             readBD();
+            closeDB();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void DeleteStudent(ActionEvent actionEvent) {
+        try {
+
+            setConn();
+            createDB();
+           deleteSudent();
             closeDB();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
